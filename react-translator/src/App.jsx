@@ -164,8 +164,7 @@ function App() {
           mimeType={'audio/wav'}
         />}
       </div>
-    </div>  
-    );
+
 };
 
       <button disabled={disabled} onClick={translate}>Translate</button>
