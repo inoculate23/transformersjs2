@@ -91,7 +91,7 @@ function App() {
 
      // Define a cleanup function for when the component is unmounted.
     return () => worker.current.removeEventListener('message', onMessageReceived);
-  });
+  };
 
 
   const handleGenerateSpeech = () => {
