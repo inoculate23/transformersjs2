@@ -124,7 +124,6 @@ function App() {
           
           <textarea value={output} rows={3} readOnly></textarea>
         </div>
-      </div>
         <div className='mb-4'>
           <label htmlFor='speaker' className='block text-sm font-medium text-gray-600'>
             Speaker
@@ -142,6 +141,7 @@ function App() {
             ))}
           </select>
         </div>
+      </div>
 
           <div className='flex justify-center'>
           <button
