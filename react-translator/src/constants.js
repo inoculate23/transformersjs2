@@ -1,4 +1,5 @@
 export const SPEAKERS = {
+    "Spanish Male": "l2-arctic-corpus_EBVS",
     "US female 1": "cmu_us_slt_arctic-wav-arctic_a0001",
     "US female 2": "cmu_us_clb_arctic-wav-arctic_a0001",
     "US male 1": "cmu_us_bdl_arctic-wav-arctic_a0003",
