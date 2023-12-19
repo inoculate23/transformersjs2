@@ -124,9 +124,49 @@ function App() {
 
         <div className='textbox-container'>
           <textarea value={input} rows={3} onChange={e => setInput(e.target.value)}></textarea>
+
+          
           <textarea value={output} rows={3} readOnly></textarea>
         </div>
       </div>
+        <div className='mb-4'>
+          <label htmlFor='speaker' className='block text-sm font-medium text-gray-600'>
+            Speaker
+          </label>
+          <select
+            id='speaker'
+            className='border border-gray-300 rounded-md p-2 w-full'
+            value={selectedSpeaker}
+            onChange={(e) => setSelectedSpeaker(e.target.value)}
+          >
+            {Object.entries(SPEAKERS).map(([key, value]) => (
+              <option key={key} value={value}>
+                {key}
+              </option>
+            ))}
+          </select>
+        </div>
+
+          <div className='flex justify-center'>
+          <button
+            className={`${disabled
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-blue-500 hover:bg-blue-600'
+              } text-white rounded-md py-2 px-4`}
+            onClick={handleGenerateSpeech}
+            disabled={disabled}
+          >
+            {disabled ? 'Generating...' : 'Generate'}
+          </button>
+        </div>
+        {output && <AudioPlayer
+          audioUrl={output}
+          mimeType={'audio/wav'}
+        />}
+      </div>
+    </div>  
+    );
+};
 
       <button disabled={disabled} onClick={translate}>Translate</button>
 
