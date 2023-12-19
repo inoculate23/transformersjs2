@@ -1,14 +1,101 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Transformers.js - Object Detection demo</title>
+    <meta charset="utf-8" />
+    <!-- keep the line below for OpenProcessing compatibility -->
+    <script src="https://openprocessing.org/openprocessing_sketch.js"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/addons/p5.sound.min.js"></script>
+    <script src="mySketch.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+    <script src="/js/script.js"></script>
+    <style>
+        html,
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+        
+        .pop {
+            background: #21cf27;
+            color: #2f2f2f;
+            font-family: 'Josefin Sans', sans-serif;
+            text-align: center;
+            font-weight: bold;
+            padding: 3px 7px;
+            border-radius: 5px;
+            border: 0px solid #000;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        #overlay {
+            position: fixed;
+            height: 60%;
+            width: 75%;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(37, 37, 37, 0.8);
+            display: none;
+        }
+        
+        #popup {
+            max-width: 85%;
+            font-family: 'Josefin Sans', sans-serif;
+            width: 90%;
+            height: 100%%;
+            padding: 5px;
+            position: relative;
+            border-radius: 3px;
+            background-color: green;
+            color: #fff;
+            margin: 10px auto;
+            z-index: 9;
+        }
+        
+        #close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #f8f7fa;
+        }
+        
+        .container {
+            margin-left: 40%;
+            margin-right: 40%
+        }
+    </style>
+
 </head>
 
 <body>
+    <div role="tablist" class="tabs tabs-lifted">
+        <a class='tab' href='https://inoculate.media/demo1/index.html' class='tab'>Demo 1</a>
+        <a role="tab" href="https://inoculate.media/demo2/index.html" class="tab">Demo 2</a>
+        <a role="tab" href="https://inoculate.media/demo3/index.html" class="tab">Demo 3</a>
+        <a role="tab" href="https://inoculate.media/demo4/index.html" class="tab">Demo 4</a>
+        <a role="tab" href="https://inoculate.media/demo5/index.html" class="tab">Demo 5</a>
+    </div>
+
+
+    <!-- Custom Jade Code Here-->
+    <div class="container">
     <main class="container">
         <label class="custom-file-upload">
             <input id="file-upload" type="file" accept="image/*" />
@@ -19,6 +106,63 @@
         <p id="status"></p>
     </main>
     <script src="index.js" type="module"></script>
+
+    <div class="btm-nav">
+
+        <a href='https://inoculate.media/main'>
+            <button class="active" role="link">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+		<span class="btm-nav-label">Home</span>
+  </button></a>
+
+        <a href="https://www.youtube.com/watch?v=86gOi0zKU78">
+            <i class="fa-solid fa-film"></i>
+            <button role="link">
+		<span class="btm-nav-label">Demo Reel</span>
+  </button></a>
+
+        <a href='https://inoculate.media/invent_yourself/'>
+            <i class="fa-solid fa-film"></i>
+            <button role="link">
+		<span class="btm-nav-label">Projection Mapping</span>
+  </button></a>
+
+        <a href='https://inoculate.media/datacube/'>
+            <i class="fa-solid fa-terminal"></i>
+            <button role="link">
+		<span class="btm-nav-label">Data Art/Coding</span>
+  </button></a>
+
+        <a href="https://inoculate.media/main/cv.pdf">
+            <i class="fa-solid fa-file"></i>
+            <button role="link">
+		<span class="btm-nav-label">Bio/CV</span>
+  </button></a>
+
+        <a href='https://inoculate.media/santa'>
+            <i class="fa-solid fa-sleigh"></i>
+            <button role="link">
+    
+		<span class="btm-nav-label">Santa</span>
+  </button></a>
+
+        <button>
+		<audio id="player" controls autoplay> 
+       
+      
+    </audio> 
+	
+  </button>
+    </div>
+
+
+
+
+
+
+
+
+<script src="tab2.js"></script>
 </body>
 
 </html>
