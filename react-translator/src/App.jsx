@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import LanguageSelector from './components/LanguageSelector';
 import Progress from './components/Progress';
 import AudioPlayer from './components/AudioPlayer';
-import Progress from './components/Progress';
 import { SPEAKERS, DEFAULT_SPEAKER } from './constants';
 
 import './App.css'
