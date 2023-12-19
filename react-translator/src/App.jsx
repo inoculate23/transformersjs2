@@ -5,7 +5,6 @@ import AudioPlayer from './components/AudioPlayer';
 import { SPEAKERS, DEFAULT_SPEAKER } from './constants';
 
 import './App.css'
-
 function App() {
 
   // Model loading
