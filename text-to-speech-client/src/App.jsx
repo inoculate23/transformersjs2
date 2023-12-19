@@ -12,7 +12,7 @@ const App = () => {
   const [progressItems, setProgressItems] = useState([]);
 
   // Inputs and outputs
-  const [text, setText] = useState('I love Hugging Face!');
+  const [text, setText] = useState('Where is a good place to eat and geta beer?');
   const [selectedSpeaker, setSelectedSpeaker] = useState(DEFAULT_SPEAKER);
   const [output, setOutput] = useState(null);
 
