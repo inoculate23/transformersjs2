@@ -158,13 +158,10 @@ function App() {
             {disabled ? 'Generating...' : 'Generate'}
           </button>
         </div>
-        {output && <AudioPlayer
-          audioUrl={output}
-          mimeType={'audio/wav'}
-        />}
-      </div>
+        {output && <AudioPlayer audioUrl={output}
+          mimeType={'audio/wav'}/>}
+      
 
-};
 
       <button disabled={disabled} onClick={translate}>Translate</button>
 
