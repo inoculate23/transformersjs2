@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import LanguageSelector from './components/LanguageSelector';
 import Progress from './components/Progress';
-import AudioPlayer from './components/AudioPlayer';
-import { SPEAKERS, DEFAULT_SPEAKER } from './constants';
 
 import './App.css'
 function App() {
