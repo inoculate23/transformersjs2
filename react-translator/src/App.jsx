@@ -10,7 +10,7 @@ function App() {
   // Model loading
   const [ready, setReady] = useState(null);
   const [disabled, setDisabled] = useState(false);
-  const [progressItems, setProgressItems] = useState([]);
+  var [progressItems, setProgressItems] = useState([]);
 
   // Inputs and outputs
   const [input, setInput] = useState('I love walking my dog.');
@@ -93,13 +93,7 @@ function App() {
   };
 
 
-  const handleGenerateSpeech = () => {
-    setDisabled(true);
-    worker.current.postMessage({
-      text,
-      speaker_id: selectedSpeaker,
-    });
-  };
+
 
   const translate = () => {
     setDisabled(true);
@@ -115,7 +109,7 @@ function App() {
       <div className='container'>
         <div className='language-container'>
           <LanguageSelector type={"Source"} defaultLanguage={"eng_Latn"} onChange={x => setSourceLanguage(x.target.value)} />
-          <LanguageSelector type={"Target"} defaultLanguage={"fra_Latn"} onChange={x => setTargetLanguage(x.target.value)} />
+          <LanguageSelector type={"Target"} defaultLanguage={"es_Latn"} onChange={x => setTargetLanguage(x.target.value)} />
         </div>
 
         <div className='textbox-container'>
@@ -124,40 +118,7 @@ function App() {
           
           <textarea value={output} rows={3} readOnly></textarea>
         </div>
-        <div className='mb-4'>
-          <label htmlFor='speaker' className='block text-sm font-medium text-gray-600'>
-            Speaker
-          </label>
-          <select
-            id='speaker'
-            className='border border-gray-300 rounded-md p-2 w-full'
-            value={selectedSpeaker}
-            onChange={(e) => setSelectedSpeaker(e.target.value)}
-          >
-            {Object.entries(SPEAKERS).map(([key, value]) => (
-              <option key={key} value={value}>
-                {key}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-          <div className='flex justify-center'>
-          <button
-            className={`${disabled
-              ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-blue-500 hover:bg-blue-600'
-              } text-white rounded-md py-2 px-4`}
-            onClick={handleGenerateSpeech}
-            disabled={disabled}
-          >
-            {disabled ? 'Generating...' : 'Generate'}
-          </button>
-        </div>
-        {output && <AudioPlayer audioUrl={output}
-          mimeType={'audio/wav'}/>}
-      
+    
 
 
       <button disabled={disabled} onClick={translate}>Translate</button>
@@ -207,42 +168,10 @@ function App() {
             onChange={(e) => setText(e.target.value)}
           ></textarea>
         </div>
-        <div className='mb-4'>
-          <label htmlFor='speaker' className='block text-sm font-medium text-gray-600'>
-            Speaker
-          </label>
-          <select
-            id='speaker'
-            className='border border-gray-300 rounded-md p-2 w-full'
-            value={selectedSpeaker}
-            onChange={(e) => setSelectedSpeaker(e.target.value)}
-          >
-            {Object.entries(SPEAKERS).map(([key, value]) => (
-              <option key={key} value={value}>
-                {key}
-              </option>
-            ))}
-          </select>
+       
         </div>
-        <div className='flex justify-center'>
-          <button
-            className={`${disabled
-              ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-blue-500 hover:bg-blue-600'
-              } text-white rounded-md py-2 px-4`}
-            onClick={handleGenerateSpeech}
-            disabled={disabled}
-          >
-            {disabled ? 'Generating...' : 'Generate'}
-          </button>
-        </div>
-        {output && <AudioPlayer
-          audioUrl={output}
-          mimeType={'audio/wav'}
-        />}
-      </div>
-    </div>
-  );
+      
+    
 };
 
     </>
